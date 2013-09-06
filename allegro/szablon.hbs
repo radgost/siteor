@@ -1,0 +1,184 @@
+<div id="product_details">
+	
+	
+		<div id="product_details_variant_{{id}}" class="product_details_variant"  {{#if hidden}}style='display:none;'{{/if}} >
+	
+			{{#if category}}
+				{{#if category_banner}}
+				<div class="shop_banner">
+					<img src="{{category.banner_url}}"/>
+				</div>
+				{{/if}}
+				
+				{{#if category_description}}
+				<div class="shop_description">
+					{{{category.description}}}
+				</div>
+
+				<div class="clear"></div>
+				{{/if}}
+				
+	
+				<p class="category_path rounded">				
+					{{#each path_categories}}
+						{{name}} »
+					{{/each}}				
+					{{product.name}}
+				</p>
+			{{/if}}
+	
+			<div class="clear"></div>
+	
+			<h3>{{product.name}}</h3>
+
+
+			
+			{{#each variants}}
+				{{# if image_url}}
+				<div class="product_main_photo" id="variant_image_{{id}}" data-siteor="variant" {{#if hidden}}style="display:none;"{{/if}}>
+				
+
+					<img id="product_img{{id}}" src="{{image_medium_url}}"/>
+						
+					
+					{{#if images}}
+						<div class="clear"></div>
+						<ul id="thumblist" class="mini_photos" >
+							{{#each images}}
+								<li>
+									<img height="65" width="65" src="{{thumb_url}}"/>
+
+								</li>
+							{{/each}}
+						</ul>
+					{{/if}}
+				</div> <!-- product_main_photo -->
+				{{/if}}
+			{{/each}}
+			
+
+			
+			<div class="product_panel">
+
+	
+				<div class="panel">		
+					
+					{{#if product.categories}}
+						<div class="shop_categories_b">
+							{{#each product.categories}}							
+								{{#if image_url}}<img src="{{image_url}}" title="{{name}}"/>{{/if}}
+							{{/each}}
+						</div>
+					{{/if}}	
+		
+					
+
+
+			
+				</div> <!-- panel -->
+
+
+				{{#if many_variants}}
+					<div id="variant_selection_place_{{product.id}}" class="variant_selection_place">
+							<div id="variant_selection">	
+								<hr />
+								<h5>{{#tt}}shop.product_variants{{/tt}}</h5>
+
+								<form>	
+									{{#each variants}}
+										<div>	
+											<input type="radio" name="product_id" id="product_id_variant{{id}}" value="{{id}}" onclick="Shoptrix.change_variant({{id}}, {{product_id}})" {{#if main}}checked="checked"{{/if}}/> <label for="product_id_variant{{id}}"> {{short_name}} {{#if show_price}} - {{price}} {{/if}}</label>
+										</div>
+									{{/each}}
+								</form>
+							</div>
+					</div>
+				{{else}}
+					<input type="hidden" id="product_id" name="product_id" value="{{product.id}}">				
+				{{/if}}
+	
+				<hr />
+		
+		
+																
+			</div> <!-- product_panel -->
+			
+					<div class="clear"></div>
+	
+			<div class="product_information">
+				
+					
+			
+				<div class="clear"></div>
+			
+				<div class="product_description">
+			
+					{{{edit_button}}}
+					
+
+					{{#each variants}}
+
+						{{#if description}}
+						<div id="variant_description_{{id}}" {{#if hidden}}style="display:none;"{{/if}} data-siteor="variant">
+							{{{description}}}
+						</div>
+
+						{{/if}}
+						
+					{{/each}}
+					
+					{{#each variants}}
+
+						{{#if product_no}}
+							<span id="variant_product_no_{{id}}" class="product_number" {{#if hidden}}style="display:none;"{{/if}} data-siteor="variant">{{#tt}}shop_product.product_no{{/tt}}: {{product_no}}</span>
+						{{/if}}
+
+						{{#if additional_fields}}
+						<div id="variant_additional_fields_{{id}}" class="additional_pos" {{#if hidden}}style="display:none;"{{/if}} data-siteor="variant">
+							{{#each additional_fields}}
+								{{#if value}}
+									<p><strong>{{name}}</strong>: {{value}} </p>
+								{{/if}}
+							{{/each}}
+						</div>
+						{{/if}}
+					{{/each}}
+
+					{{#product}}
+						<div class="shop_categories">
+						{{#each categories}}
+							{{name}}
+						{{/each}}
+						</div>
+					{{/product}}
+					
+					
+					
+		
+										
+				</div><!-- product_description -->
+
+		
+
+				<div class="clear"></div>
+		
+			</div> <!-- product_information -->
+		
+		</div> <!-- product_details_variant_id --> 
+
+
+	
+	
+	<div class="clear"></div>
+
+
+	
+
+	
+	
+	
+	<div class="clear"></div>
+	
+</div>	<!-- product_details -->
+
+</form>
