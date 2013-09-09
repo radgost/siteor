@@ -1,135 +1,95 @@
 <h2>Szablon Allegro Zaawansowany</h2>
 
-<div id="product_details">
+
+{{#if product.categories}}
 	
+		{{#each product.categories}}							
+			{{#if image_url}}<img src="{{image_url}}" title="{{name}}"/>{{/if}}
+		{{/each}}
 	
-		<div id="product_details_variant_{{id}}" class="product_details_variant" >
+{{/if}}	
+
+
+{{#if category}}
+
+	{{#if category_banner}}
 	
-			{{#if category}}
-				{{#if category_banner}}
-				<div class="shop_banner">
-					<img src="{{category.banner_url}}"/>
-				</div>
-				{{/if}}
+		<img src="{{category.banner_url}}"/>
+	
+	{{/if}}
+
+	{{#if category_description}}
+	
+		{{{category.description}}}
+
+	{{/if}}
+
+
+			
+		{{#each path_categories}}
+			{{name}} »
+		{{/each}}		
 				
-				{{#if category_description}}
-				<div class="shop_description">
-					{{{category.description}}}
-				</div>
-
-				<div class="clear"></div>
-				{{/if}}
-				
+		{{product.name}}
 	
-				<p class="category_path rounded">				
-					{{#each path_categories}}
-						{{name}} »
-					{{/each}}				
-					{{product.name}}
-				</p>
-			{{/if}}
+{{/if}}
+
+
+
+{{#with product}}
+
+	<h3>{{name}}</h3>
+
+	{{# if image_url}}
 	
-			<div class="clear"></div>
+
+	{{#if image_enlarge}}
 	
-	       {{#with product}}
-				<h3>{{name}}</h3>
+		
+		<a href="{{image_large_url}}" target="_blank">
+			<img  src="{{image_medium_url}}"/>	
+		</a>
+	
+		
+	{{else}}
+		<img  src="{{image_medium_url}}"/>
+	{{/if}}
 
-          		{{# if image_url}}
-				<div class="product_main_photo" id="variant_image_{{id}}" data-siteor="variant">
-				
 
-					<img id="product_img{{id}}" src="{{image_medium_url}}"/>
-						
-					
-					{{#if images}}
-						<div class="clear"></div>
-						<ul id="thumblist" class="mini_photos" >
-							{{#each images}}
-								<li>
-									<img height="65" width="65" src="{{thumb_url}}"/>
 
-								</li>
-							{{/each}}
-						</ul>
-					{{/if}}
-				</div> <!-- product_main_photo -->
-				{{/if}}
-          {{/with}}
 
+		{{#if images}}
+			
+			{{#each images}}
+			
+				 <a href="{{medium_url}}" target="_blank"><img height="65" width="65" src="{{thumb_url}}"/></a>
 
 			
-			<div class="product_panel">
-
-	
-				<div class="panel">		
-					
-					{{#if product.categories}}
-						<div class="shop_categories_b">
-							{{#each product.categories}}							
-								{{#if image_url}}<img src="{{image_url}}" title="{{name}}"/>{{/if}}
-							{{/each}}
-						</div>
-					{{/if}}	
-		
-					
-
-
+			{{/each}}
 			
-				</div> <!-- panel -->
-
+		{{/if}}
 	
-				<hr />
-		
-		
-																
-			</div> <!-- product_panel -->
-			
-					<div class="clear"></div>
-	
-			<div class="product_information">
-				
-					
-			
-				<div class="clear"></div>
-			
-				<div class="product_description">
-		
-					
+	{{/if}}
+      
+      
+     
+{{/with}}
 
 
-					{{#product}}
-						<div class="shop_categories">
-						{{#each categories}}
-							{{name}}
-						{{/each}}
-						</div>
-					{{/product}}
-					
-					
-					
-		
-										
-				</div><!-- product_description -->
-
-		
-
-				<div class="clear"></div>
-		
-			</div> <!-- product_information -->
-		
-		</div> <!-- product_details_variant_id --> 
 
 
-	
-	
-	<div class="clear"></div>
 
 
-	
 
-	
-	
-	
-	<div class="clear"></div>
-	
-</div>	<!-- product_details -->
+
+
+{{#if product.description}}
+
+	{{{product.description}}}
+
+{{/if}}
+
+
+
+
+
