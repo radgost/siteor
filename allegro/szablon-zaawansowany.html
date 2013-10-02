@@ -71,7 +71,11 @@
 	
 	{{/if}}
       
-      
+	{{#if variants}}
+		{{#each variants}}
+			size from: {{size_from}}, size to: {{size_to}}
+		{{/each}}
+	{{/if}}
      
 {{/with}}
 
